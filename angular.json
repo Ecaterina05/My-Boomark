@@ -67,7 +67,10 @@
               "buildTarget": "my-bookmark-app:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "open": true
+          }
         },
         "test": {
           "builder": "@angular/build:unit-test"

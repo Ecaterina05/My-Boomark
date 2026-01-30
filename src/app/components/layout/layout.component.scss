@@ -1,0 +1,124 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.app-toolbar {
+  background-color: #CEF4D1;
+  color: #2F4F3A !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .search-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  mat-select {
+    height: 72%;
+    width: 80px;
+    background-color: #F0FDF3;
+    border-radius: 8px;
+
+    .mat-mdc-select-trigger {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      .mat-mdc-select-value {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding-top: 0;
+        padding-left: 0.5rem;
+      }
+
+      .mat-mdc-select-arrow-wrapper {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding-top: 0;
+        padding-right: 0.5rem;
+      }
+    }
+
+    .cdk-overlay-popover {
+      width: 100% !important;
+
+      .cdk-overlay-pane {
+        width: 8% !important;
+      }
+    }
+  }
+
+  mat-form-field {
+    height: 100%;
+    padding-left: 0.5rem;
+
+    .mat-mdc-text-field-wrapper {
+      background-color: inherit;
+
+      .mat-mdc-form-field-flex {
+        padding-top: 0.5rem;
+      }
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+      height: 10px;
+    }
+  }
+}
+
+::ng-deep .genre-selection {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  mat-form-field {
+    height: 100%;
+    padding-left: 0.5rem;
+
+    .mat-mdc-text-field-wrapper {
+      background-color: inherit;
+
+      .mat-mdc-form-field-flex {
+        padding-top: 0.5rem;
+      }
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+      height: 10px;
+    }
+  }
+}
+
+.rating-filter {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+  }
+
+  mat-icon {
+    font-size: 22px;
+    color: #2F4F3A;
+  }
+}
+
+::ng-deep .custom-toggle-label .mdc-label {
+  font-size: 1.2rem;
+  color: #2F4F3A;
+}
+
+
+
+
+
+

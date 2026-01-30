@@ -1,0 +1,41 @@
+<mat-toolbar class="app-toolbar">
+  <span>My Bookmarks</span>
+  <span class="spacer"></span>
+  <div class="search-wrapper">
+    <mat-select [(ngModel)]="searchBy" (selectionChange)="onSelectSearchBy()">
+      <mat-option value="author">Author</mat-option>
+      <mat-option value="title">Title</mat-option>
+    </mat-select>
+    <mat-form-field>
+      <input matInput [placeholder]="searchPlaceholder" [(ngModel)]="searchText" (input)="onSearch()" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+  <span class="spacer"></span>
+  <div class="genre-selection">
+    <mat-form-field>
+      <mat-label>Genres</mat-label>
+      <mat-select [(ngModel)]="selectedGenres" multiple (selectionChange)="onSelectGenres()">
+        @for (genre of genres; track genre) {
+          <mat-option [value]="genre">{{genre.display}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <span class="spacer"></span>
+  <p class="custom-toggle-label"><mat-slide-toggle [(ngModel)]="myRating" (change)="onToggleChange()" labelPosition="before">My ratings</mat-slide-toggle></p>
+  <div *ngIf="myRating" class="rating-filter">
+    <button
+      mat-icon-button
+      *ngFor="let star of [1,2,3,4,5]"
+      (click)="setRating(star)">
+      <mat-icon>
+        {{ star <= (hoverRating || rating) ? 'star' : 'star_border' }} </mat-icon>
+    </button>
+  </div>
+  <span class="spacer"></span>
+  <button matIconButton>
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+
