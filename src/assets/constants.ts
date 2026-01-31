@@ -1,4 +1,6 @@
-export const bookGenres = [
+import { Genre } from "../app/models/bookmark.model";
+
+export const bookGenres: Genre[] = [
   {
     display: 'Action & Adventure',
     code: 1

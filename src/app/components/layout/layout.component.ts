@@ -11,6 +11,8 @@ import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterOutlet } from '@angular/router';
+import { BookmarkFiltersService } from '../../services/bookmark-filters.service';
+import { Genre } from '../../models/bookmark.model';
 
 @Component({
   selector: 'app-layout-component',
@@ -36,21 +38,14 @@ export class LayoutComponent implements OnInit {
   searchPlaceholder: string = '';
 
   genres = bookGenres;
-  selectedGenres: any[] = [];
+  selectedGenres: Genre[] = [];
 
   myRating = false;
 
-  filters: any = new BehaviorSubject<any>({
-    search: {
-      key: '',
-      text: ''
-    },
-    genres : [],
-    rating : 0
-  });
-
   rating = 0;
   hoverRating = 0
+
+  constructor(private filtersService: BookmarkFiltersService) { }
 
   ngOnInit() {
     this.onSelectSearchBy();
@@ -61,24 +56,36 @@ export class LayoutComponent implements OnInit {
   }
 
   onSearch() {
-    this.filters.getValue().search = {
-      key: this.searchBy,
-      text: this.searchText
-    }
+    const current = this.filtersService.getFilters();
+    this.filtersService.setFilters({
+      ...current,
+      search: { key: this.searchBy, text: this.searchText }
+    });
+
   }
 
   onSelectGenres() {
-    this.filters.getValue().genres = this.selectedGenres;
+    const current = this.filtersService.getFilters();
+    this.filtersService.setFilters({
+      ...current,
+      genres: this.selectedGenres
+    });
   }
 
   onToggleChange() {
     if (!this.myRating) {
       this.rating = 0;
+      this.setRating(this.rating);
     }
   }
 
   setRating(value: number) {
     this.rating = this.rating === value ? 0 : value;
-    this.filters.getValue().rating = this.rating;
+
+    const current = this.filtersService.getFilters();
+    this.filtersService.setFilters({
+      ...current,
+      rating: value
+    });
   }
 }

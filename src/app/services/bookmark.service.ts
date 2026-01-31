@@ -9,7 +9,7 @@ export class BookmarkService {
   private bookmarksSubject = new BehaviorSubject<Bookmark[]>([]);
   bookmarks$ = this.bookmarksSubject.asObservable();
 
-  private loadingSubject = new BehaviorSubject<boolean>(false);
+  public loadingSubject = new BehaviorSubject<boolean>(false);
   loading$ = this.loadingSubject.asObservable();
 
   private apiUrl = 'http://localhost:3000/bookmarks';
@@ -22,7 +22,6 @@ export class BookmarkService {
       delay(500),
       tap(bookmarks => {
         this.bookmarksSubject.next(bookmarks);
-        this.loadingSubject.next(false);
       }),
       catchError(err => {
         console.error(err);

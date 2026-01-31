@@ -1,37 +1,44 @@
 <div id="bookmarkList">
-  <!-- <div class="center-class">
-    <mat-spinner *ngIf="isLoading | async"></mat-spinner>
-  </div> -->
-  <div class="book-list">
-    @for (book of bookmarks; track book) {
-    <mat-card class="book-card" appearance="outlined">
-      <div class="book-card-header">
-        <div>
-          <mat-card-title>{{ book.title }}</mat-card-title>
-          <mat-card-subtitle>by {{ book.author }}</mat-card-subtitle>
-        </div>
-        <div>
-          <button mat-icon-button (click)="editBook(book)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button (click)="deleteBook(book)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </div>
-
-      <mat-card-content>
-        <p class="font-class">{{'Genre: ' + book.genre.display}}</p>
-        <p class="font-class">My rating:
-          @for (star of [1,2,3,4,5]; track star) {
-          <mat-icon>
-            {{ (star < book.rating) ? 'star' : 'star_border' }}
-          </mat-icon>
-          }
-        </p>
-        <p><mat-icon>menu_book</mat-icon>{{ book.notes }}</p>
-      </mat-card-content>
-    </mat-card>
+  @if (isLoading | async) {
+    <div class="center-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
     }
-  </div>
+  @if (!(isLoading | async)) {
+    <div class="book-list">
+      @for (book of bookmarks; track book; let i = $index) {
+      @if (i === 0 || bookmarks[i].createdKey !== bookmarks[i - 1].createdKey) {
+        <h3>{{ bookmarks[i].createdKey }}</h3>
+      }
+      <mat-card class="book-card" appearance="outlined">
+        <div class="book-card-header">
+          <div>
+            <mat-card-title>{{ book.title }}</mat-card-title>
+            <mat-card-subtitle>by {{ book.author }}</mat-card-subtitle>
+          </div>
+          <div>
+            <button mat-icon-button (click)="editBook(book)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteBook(book)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <mat-card-content>
+          <p class="font-class">{{'Genre: ' + book.genre.display}}</p>
+          <p class="font-class">My rating:
+            @for (star of [1,2,3,4,5]; track star) {
+            <mat-icon>
+              {{ (star <= book.rating) ? 'star' : 'star_border' }}
+            </mat-icon>
+            }
+          </p>
+          <p><mat-icon>menu_book</mat-icon>{{ book.notes }}</p>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+  }
 </div>

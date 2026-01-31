@@ -6,9 +6,21 @@ export interface Bookmark {
   genre: Genre;
   notes: string;
   created: string;
+  createdKey: string;
 }
 
-interface Genre {
+export interface Genre {
   display: string;
   code: number;
+}
+
+export interface BookmarkFilters {
+  search: SearchFilter;
+  genres: Genre[];
+  rating: number;
+}
+
+export interface SearchFilter {
+  key: 'title' | 'author'
+  text: string;
 }
