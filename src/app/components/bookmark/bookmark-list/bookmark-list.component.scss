@@ -1,0 +1,34 @@
+#bookmarkList {
+  height: calc(100% - 96px);
+  width: 100%;
+  padding-top: 2rem;
+
+  display: flex;
+  justify-content: center;
+
+  .book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 40%;
+
+    .book-card {
+      background-color: #F0FDF3;
+      color: #2F4F3A !important;
+      height: fit-content;
+
+      .book-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+      }
+    }
+
+    .font-class {
+      font-size: 1rem;
+      color: #2F4F3A;
+    }
+  }
+}
+

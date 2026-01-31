@@ -95,23 +95,6 @@
   }
 }
 
-.rating-filter {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-
-  button {
-    width: 36px;
-    height: 36px;
-    padding: 0;
-  }
-
-  mat-icon {
-    font-size: 22px;
-    color: #2F4F3A;
-  }
-}
-
 ::ng-deep .custom-toggle-label .mdc-label {
   font-size: 1.2rem;
   color: #2F4F3A;

@@ -1,9 +1,16 @@
 import { Routes } from '@angular/router';
+import { LayoutComponent } from './components/layout/layout.component';
+import { BookmarkListComponent } from './components/bookmark/bookmark-list/bookmark-list.component';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./components/layout/layout.component').then(m => m.LayoutComponent),
-  },
+    component: LayoutComponent,
+    children: [
+      { path: '', component: BookmarkListComponent },
+      // { path: 'bookmarks/new', component: BookmarkFormComponent },
+      // { path: 'bookmarks/edit/:id', component: BookmarkFormComponent }
+    ]
+  }
 ];
+

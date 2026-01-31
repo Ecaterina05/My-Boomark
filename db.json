@@ -1,0 +1,28 @@
+{
+  "bookmarks": [
+    {
+      "id": 1,
+      "title": "Gone with the wind",
+      "author": "Margaret Mitchell",
+      "rating": 4,
+      "genre": {
+        "display": "Romance",
+        "code": 9
+      },
+      "notes": "I loved this tumultuos love story",
+      "created": "2026-01-30T16:20:15.123Z"
+    },
+    {
+      "id": 2,
+      "title": "Gone with the wind",
+      "author": "Margaret Mitchell",
+      "rating": 4,
+      "genre": {
+        "display": "Romance",
+        "code": 9
+      },
+      "notes": "I loved this tumultuos love story",
+      "created": "2026-01-30T16:20:15.123Z"
+    }
+  ]
+}

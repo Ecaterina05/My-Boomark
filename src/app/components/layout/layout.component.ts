@@ -10,10 +10,12 @@ import { bookGenres } from '../../../assets/constants';
 import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout-component',
   imports: [
+    RouterOutlet,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
