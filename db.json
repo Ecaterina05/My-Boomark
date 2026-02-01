@@ -1,18 +1,6 @@
 {
   "bookmarks": [
     {
-      "id": "1",
-      "title": "Gone with the wind",
-      "author": "Margaret Mitchell",
-      "rating": 4,
-      "genre": {
-        "display": "Romance",
-        "code": 9
-      },
-      "notes": "I loved this tumultuos love story",
-      "created": "2026-01-28T16:20:15.123Z"
-    },
-    {
       "id": "2",
       "title": "Gone with the wind",
       "author": "Margaret Mitchell",
@@ -23,30 +11,6 @@
       },
       "notes": "I loved this tumultuos love story",
       "created": "2026-01-30T16:20:15.123Z"
-    },
-    {
-      "id": "3",
-      "title": "Gone with the wind",
-      "author": "Margaret Mitchell",
-      "rating": 1,
-      "genre": {
-        "display": "Dystopian",
-        "code": 3
-      },
-      "notes": "I loved this tumultuos love story",
-      "created": "2026-01-31T16:20:15.123Z"
-    },
-    {
-      "id": "4",
-      "title": "Gone with the wind",
-      "author": "Margaret Mitchell",
-      "rating": 5,
-      "genre": {
-        "display": "Romance",
-        "code": 9
-      },
-      "notes": "I loved this tumultuos love story",
-      "created": "2026-01-29T16:20:15.123Z"
     },
     {
       "id": "cf8e",

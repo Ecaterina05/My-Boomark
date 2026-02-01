@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { BookmarkFiltersService } from '../../../services/bookmark-filters.service';
 import Fuse from 'fuse.js';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-bookmark-list',
@@ -17,18 +19,19 @@ import Fuse from 'fuse.js';
   styleUrl: './bookmark-list.component.scss',
 })
 export class BookmarkListComponent {
-  bookmarks!: Bookmark[];
+  bookmarks!: Observable<Bookmark[]>;
   isLoading!: Observable<boolean>;
 
   constructor(
     private bookmarkService: BookmarkService,
-    private filtersService: BookmarkFiltersService
+    private filtersService: BookmarkFiltersService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
     this.bookmarkService.loadBookmarks();
 
-    combineLatest([
+    this.bookmarks = combineLatest([
       this.bookmarkService.bookmarks$,
       this.filtersService.filters$
     ]).pipe(
@@ -58,9 +61,7 @@ export class BookmarkListComponent {
 
         return this.groupByRelativeDate(filtered);
       })
-    ).subscribe(result => {
-      this.bookmarks = result;
-    });
+    );
 
     this.isLoading = this.bookmarkService.loading$;
   }
@@ -70,7 +71,17 @@ export class BookmarkListComponent {
   }
 
   deleteBook(book: Bookmark) {
+    if (!book.id) return;
 
+    this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Delete Bookmark',
+        message: `Are you sure you want to delete "${book.title + ' by ' + book.author}"?`
+      }
+    }).afterClosed().subscribe(result => {
+      if (result && book.id) this.bookmarkService.deleteBookmark(book.id);
+    });
   }
 
   groupByRelativeDate(bookmarks: Bookmark[]) {

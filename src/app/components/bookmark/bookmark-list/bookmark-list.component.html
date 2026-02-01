@@ -6,9 +6,9 @@
     }
   @if (!(isLoading | async)) {
     <div class="book-list">
-      @for (book of bookmarks; track book; let i = $index) {
-      @if (i === 0 || bookmarks[i].createdKey !== bookmarks[i - 1].createdKey) {
-        <h3>{{ bookmarks[i].createdKey }}</h3>
+      @for (book of bookmarks | async; track book; let i = $index) {
+      @if (i === 0 || book.createdKey !== (bookmarks | async)?.[i - 1]?.createdKey) {
+        <h3>{{ book.createdKey }}</h3>
       }
       <mat-card class="book-card" appearance="outlined">
         <div class="book-card-header">
