@@ -11,6 +11,7 @@ import { BookmarkFiltersService } from '../../../services/bookmark-filters.servi
 import Fuse from 'fuse.js';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/confirm-dialog/confirm-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bookmark-list',
@@ -25,7 +26,8 @@ export class BookmarkListComponent {
   constructor(
     private bookmarkService: BookmarkService,
     private filtersService: BookmarkFiltersService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -67,7 +69,9 @@ export class BookmarkListComponent {
   }
 
   editBook(book: Bookmark) {
-
+    if (book.id) {
+      this.router.navigate(['/bookmarks/edit', book.id]);
+    }
   }
 
   deleteBook(book: Bookmark) {

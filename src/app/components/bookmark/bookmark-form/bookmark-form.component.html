@@ -29,7 +29,7 @@
           <mat-form-field appearance="outline" class="col">
             <mat-label>Genre</mat-label>
             <mat-select formControlName="genre">
-              <mat-option *ngFor="let g of bookGenres" [value]="g">
+              <mat-option *ngFor="let g of bookGenres" [value]="g.code">
                 {{ g.display }}
               </mat-option>
             </mat-select>

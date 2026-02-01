@@ -37,6 +37,8 @@ export class BookmarkFormComponent implements OnInit {
   rating = 0;
   hoverRating = 0;
 
+  selectedBookmark!: Bookmark;
+
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -50,10 +52,25 @@ export class BookmarkFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
-      genre: ['', Validators.required],
+      genre: [null, Validators.required],
       notes: [''],
       rating: [0]
     });
+
+    if (this.bookmarkId) {
+      this.bookmarkService.getBookmarkById(this.bookmarkId).subscribe(selectedBookmark => {
+        if (selectedBookmark) {
+          this.selectedBookmark = selectedBookmark;
+          this.form.patchValue({
+            title: selectedBookmark.title,
+            author: selectedBookmark.author,
+            genre: selectedBookmark.genre.code,
+            notes: selectedBookmark.notes
+          });
+          this.setRating(selectedBookmark.rating);
+        }
+      });
+    }
   }
 
   setRating(star: number) {
@@ -71,13 +88,15 @@ export class BookmarkFormComponent implements OnInit {
       return;
     }
 
+    const selectedGenre = this.bookGenres.find(g => g.code === this.form.value.genre);
+
     const bookmark: Bookmark = {
       title: this.form.value.title,
       author: this.form.value.author,
-      genre: this.form.value.genre,
+      genre: selectedGenre!,
       notes: this.form.value.notes,
       rating: this.form.value.rating,
-      created: (new Date()).toISOString()
+      created: this.selectedBookmark?.created || (new Date()).toISOString()
     };
 
     if (this.bookmarkId) {

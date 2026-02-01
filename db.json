@@ -13,16 +13,64 @@
       "created": "2026-01-30T16:20:15.123Z"
     },
     {
-      "id": "cf8e",
-      "title": "carte cati",
-      "author": "cati",
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": "J. K. Rowling",
+      "genre": {
+        "display": "Fantasy",
+        "code": 4
+      },
+      "notes": "One of the best childhood books ever read <3",
+      "rating": 5,
+      "created": "2026-02-01T21:22:04.034Z",
+      "id": "feb8"
+    },
+    {
+      "id": "d6c5",
+      "title": "The Da Vinci Code",
+      "author": "Dan Brown",
+      "genre": {
+        "display": "Mystery/Thriller",
+        "code": 7
+      },
+      "notes": "",
+      "rating": 4,
+      "created": "2026-02-01T21:22:45.840Z"
+    },
+    {
+      "id": "9833",
+      "title": "Me Before You",
+      "author": "Jojo Moyes",
       "genre": {
         "display": "Romance",
         "code": 9
       },
-      "notes": "eferfgerfgr",
+      "notes": "Me Before You is a romance novel written by Jojo Moyes. The book was first published on 5 January 2012 in the United Kingdom. A sequel titled After You was released on 24 September 2015 through Pamela Dorman Books.[1][2] A second sequel, Still Me, was published in January 2018.",
+      "rating": 5,
+      "created": "2026-02-01T21:24:01.373Z"
+    },
+    {
+      "id": "ca58",
+      "title": "A Song of Ice and Fire",
+      "author": "George R. R. Martin",
+      "genre": {
+        "display": "Fantasy",
+        "code": 4
+      },
+      "notes": "",
       "rating": 3,
-      "created": "2026-02-01T20:02:26.836Z"
+      "created": "2026-02-01T21:25:02.236Z"
+    },
+    {
+      "id": "a97b",
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "genre": {
+        "display": "Sci-Fi",
+        "code": 10
+      },
+      "notes": "Dune is a 1965 epic science fiction novel by American author Frank Herbert, originally published as two separate serials (1963–64 novel Dune World and 1965 novel Prophet of Dune) in Analog magazine. It tied with Roger Zelazny's This Immortal for the Hugo Award for Best Novel and won the inaugural Nebula Award for Best Novel in 1966. It is the first installment of the Dune Chronicles. It is one of the world's best-selling science fiction novels",
+      "rating": 4,
+      "created": "2026-02-01T21:26:07.757Z"
     }
   ]
 }
