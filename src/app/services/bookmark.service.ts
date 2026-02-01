@@ -32,6 +32,11 @@ export class BookmarkService {
     ).subscribe();
   }
 
+  getBookmarkById(id: string) {
+    const bookmark = this.bookmarksSubject.value.find(b => b.id === id);
+    return of(bookmark);
+  }
+
   addBookmark(bookmark: Bookmark) {
     this.http.post<Bookmark>(this.apiUrl, bookmark).pipe(
       tap(newBookmark => {
@@ -60,7 +65,7 @@ export class BookmarkService {
     ).subscribe();
   }
 
-  deleteBookmark(id: number) {
+  deleteBookmark(id: string) {
     this.http.delete(`${this.apiUrl}/${id}`).pipe(
       tap(() => {
         const current = this.bookmarksSubject.value.filter(b => b.id !== id);

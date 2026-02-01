@@ -1,12 +1,12 @@
 export interface Bookmark {
-  id: number;
+  id?: string;
   title: string;
   author: string;
   rating: number;
   genre: Genre;
   notes: string;
   created: string;
-  createdKey: string;
+  createdKey?: string;
 }
 
 export interface Genre {

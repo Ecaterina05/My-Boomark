@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { bookGenres } from '../../../assets/constants';
 import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { BookmarkFiltersService } from '../../services/bookmark-filters.service';
 import { Genre } from '../../models/bookmark.model';
 
@@ -44,7 +44,10 @@ export class LayoutComponent implements OnInit {
   rating = 0;
   hoverRating = 0
 
-  constructor(private filtersService: BookmarkFiltersService) { }
+  constructor(
+    private filtersService: BookmarkFiltersService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.onSelectSearchBy();
@@ -86,5 +89,9 @@ export class LayoutComponent implements OnInit {
       ...current,
       rating: value
     });
+  }
+
+  onBookmarkAdd() {
+    this.router.navigate(['/bookmarks/new']);
   }
 }

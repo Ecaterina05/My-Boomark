@@ -1,0 +1,48 @@
+#bookmarkForm {
+  height: calc(100% - 96px);
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bookmark-card {
+    width: 50vw;
+    max-height: 60vh;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    mat-card-header {
+      padding-bottom: 1rem;
+
+      mat-card-title {
+        font-weight: 600;
+        font-size: 1.3rem;
+        color: #2e7d32;
+      }
+    }
+
+    textarea[matInput] {
+      max-height: 200px;
+      min-height: 100px;
+      overflow-y: auto;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+  }
+
+  .row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .col {
+    flex: 1;
+  }
+
+  .text-class {
+    font-size: 1.2rem;
+    color: #2F4F3A;
+  }
+}
