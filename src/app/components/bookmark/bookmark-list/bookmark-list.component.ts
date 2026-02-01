@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { BookmarkFiltersService } from '../../../services/bookmark-filters.service';
+import Fuse from 'fuse.js';
 
 @Component({
   selector: 'app-bookmark-list',
@@ -32,27 +33,33 @@ export class BookmarkListComponent {
       this.filtersService.filters$
     ]).pipe(
       map(([bookmarks, filters]) => {
-        const filtered = bookmarks.filter((book: any) => {
-          const searchText = filters.search.text?.toLowerCase() || '';
-          const searchKey = filters.search.key.toLowerCase();
-          const searchMatch = searchText
-            ? book[searchKey]?.toLowerCase().includes(searchText)
-            : true;
+        let searched: Bookmark[] = bookmarks;
 
+        const searchText = filters.search.text?.trim();
+        if (searchText) {
+          const fuse = new Fuse(bookmarks, {
+            keys: [filters.search.key],
+            threshold: 0.35,
+            ignoreLocation: true,
+          });
+
+          searched = fuse.search(searchText).map(r => r.item);
+        }
+
+        const filtered = searched.filter((book: any) => {
           const genres = filters.genres || [];
-          const genreMatch = genres.length ? genres.find(x => x.code === book.genre.code) : true;
+          const genreMatch = genres.length ? genres.find(x => x.code === book.genre.code): true;
 
           const rating = filters.rating || 0;
           const ratingMatch = rating ? book.rating === rating : true;
 
-          return searchMatch && genreMatch && ratingMatch;
+          return genreMatch && ratingMatch;
         });
 
         return this.groupByRelativeDate(filtered);
       })
     ).subscribe(result => {
       this.bookmarks = result;
-      this.bookmarkService.loadingSubject.next(false);
     });
 
     this.isLoading = this.bookmarkService.loading$;

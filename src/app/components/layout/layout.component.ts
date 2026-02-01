@@ -7,7 +7,6 @@ import { MatInput } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { bookGenres } from '../../../assets/constants';
-import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterOutlet } from '@angular/router';
@@ -53,6 +52,7 @@ export class LayoutComponent implements OnInit {
 
   onSelectSearchBy() {
     this.searchPlaceholder = 'Search ' + this.searchBy + '...';
+    this.onSearch();
   }
 
   onSearch() {
@@ -61,7 +61,6 @@ export class LayoutComponent implements OnInit {
       ...current,
       search: { key: this.searchBy, text: this.searchText }
     });
-
   }
 
   onSelectGenres() {

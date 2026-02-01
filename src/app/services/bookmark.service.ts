@@ -22,6 +22,7 @@ export class BookmarkService {
       delay(500),
       tap(bookmarks => {
         this.bookmarksSubject.next(bookmarks);
+        this.loadingSubject.next(false);
       }),
       catchError(err => {
         console.error(err);
