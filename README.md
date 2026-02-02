@@ -2,6 +2,22 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
 
+## Prerequisites
+
+Make sure you have the following installed before running the project:
+
+- Node.js **v22.22.0** (recommended)
+- npm **v10+**
+- Angular CLI **v21**
+
+You can check your versions with:
+
+```bash
+node -v
+npm -v
+ng version
+```
+
 ## Running the application
 
 This project requires **both Angular and json-server** to run concurrently.
