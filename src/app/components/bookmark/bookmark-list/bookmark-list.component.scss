@@ -1,5 +1,6 @@
 #bookmarkList {
   height: calc(100% - 96px);
+  overflow-y: auto;
   width: 100%;
   padding-top: 2rem;
 
