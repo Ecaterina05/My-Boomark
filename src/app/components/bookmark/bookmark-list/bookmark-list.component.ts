@@ -96,8 +96,8 @@ export class BookmarkListComponent {
     const yesterday = new Date();
     yesterday.setDate(today.getDate() - 1);
 
-    const todayJustDate = this.onlyDate(today).substring(0, 10);
-    const yesterdayJustDate = this.onlyDate(yesterday).substring(0, 10);
+    const todayJustDate = this.onlyDate(today);
+    const yesterdayJustDate = this.onlyDate(yesterday);
 
     bookmarks.forEach(book => {
       const bookDate = this.onlyDate(book.created);
